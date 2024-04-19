@@ -1,0 +1,123 @@
+{% load static %}
+<!-- Newsletter Start -->
+                   <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
+                    </div>
+                    <div class="bg-white text-center border border-top-0 p-3">
+                        <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
+                        <div class="input-group mb-2" style="width: 100%;">
+                            <input type="text" class="form-control form-control-lg" placeholder="Your Email">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                            </div>
+                        </div>
+                        <small>Lorem ipsum dolor sit amet elit</small>
+                    </div>
+                </div>
+                <!-- Newsletter End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- News With Sidebar End -->
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
+    <div class="row py-4">
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
+            <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>{{ settings.site_location_address }}</p>
+            <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>{{ settings.phone_number }}</p>
+            <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>{{ settings.contact_email }}</p>
+            <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
+            <div class="d-flex justify-content-start">
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="{{ settings.linkedin_url }}"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="{{ settings.facebook_url }}"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="{{ settings.linkedin_url }}"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="{{ settings.instgram_url }}"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square" href="{{ settings.youtube_url }}"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        {% comment %} <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
+            <div class="mb-3">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+            </div>
+            <div class="mb-3">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+            </div>
+            <div class="">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+            </div>
+        </div> {% endcomment %}
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
+            <div class="m-n1">
+                {% for category in categories %}
+                <a href="" class="btn btn-sm btn-secondary m-1">{{ category.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% comment %} <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img class="w-100" src="img/news-110x110-2.jpg" alt=""></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img class="w-100" src="img/news-110x110-3.jpg" alt=""></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img class="w-100" src="img/news-110x110-4.jpg" alt=""></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img class="w-100" src="img/news-110x110-5.jpg" alt=""></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
+                </div>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
+<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
+    <p class="m-0 text-center">&copy; <a href="#">{{ settings.site_title }}</a>. All Rights Reserved. 
+    
+    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+    Design by <a href="https://htmlcodex.com">HTML Codex</a></p>
+</div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'assets/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'assets/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>
