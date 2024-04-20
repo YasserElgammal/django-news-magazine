@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Article, Category
+from .models.comment import Comment
 from django.db.models import Count
 
 # Create your views here.
@@ -13,8 +14,9 @@ def index(request):
 
 def article_detail(request, slug):
     article = get_object_or_404(Article, slug=slug)
+    comments = Comment.objects.filter(article=article).select_related('user')
     
-    return render(request, 'single_article.html', {'article': article})
+    return render(request, 'single_article.html', {'article': article , 'comments': comments})
 
 def category_articles(request, slug):
     category = get_object_or_404(Category, slug=slug)

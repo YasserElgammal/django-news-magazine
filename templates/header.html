@@ -1,4 +1,5 @@
 {% load static %}
+{% load tz %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,9 +35,9 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-n2">
                         <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Monday, January 1, 2045</a>
+                            <a class="nav-link text-body small" href="#">{% now "Y-M-d H:i:s" %}</a>
                         </li>
-                        <li class="nav-item border-right border-secondary">
+                        {% comment %} <li class="nav-item border-right border-secondary">
                             <a class="nav-link text-body small" href="#">Advertise</a>
                         </li>
                         <li class="nav-item border-right border-secondary">
@@ -44,7 +45,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-body small" href="#">Login</a>
-                        </li>
+                        </li> {% endcomment %}
                     </ul>
                 </nav>
             </div>
