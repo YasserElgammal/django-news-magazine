@@ -95,9 +95,9 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
                     {% for category in categories %}
-                    <a href="{{ category.slug }}" class="nav-item nav-link">{{ category.title }}</a>
+                    <a href="{% url 'category_articles' category.slug %}" class="nav-item nav-link">{{ category.title }}</a>
                     {% endfor %}
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>

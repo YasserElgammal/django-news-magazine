@@ -7,8 +7,9 @@ from django.db.models import Count
 def index(request):
     latest_articles = Article.objects.select_related('category', 'user').annotate(comments_count=Count('comment')).order_by('-created_at')
     trends_articles = Article.objects.select_related('category').order_by('-views')[:10]
-
-    return render(request, 'index.html', {'latest_articles': latest_articles, 'trends_articles': trends_articles})
+    featured_articles = Article.objects.filter(is_featured=True)
+    
+    return render(request, 'index.html', {'latest_articles': latest_articles, 'trends_articles': trends_articles, 'featured_articles': featured_articles})
 
 def article_detail(request, slug):
     article = get_object_or_404(Article, slug=slug)
@@ -17,6 +18,6 @@ def article_detail(request, slug):
 
 def category_articles(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    articles = Article.objects.filter(category=category)
+    articles = Article.objects.filter(category=category).annotate(comments_count=Count('comment'))
 
     return render(request, 'category_articles.html', {'category': category, 'articles': articles})

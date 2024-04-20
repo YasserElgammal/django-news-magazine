@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .article import Article
 
 class Comment(models.Model):
+    id = models.BigAutoField(primary_key=True)
     body = models.TextField(max_length=1000)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
