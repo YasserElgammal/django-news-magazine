@@ -21,4 +21,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('article/<slug:slug>/', views.article_detail, name='article_detail'),
     path('category/<slug:slug>/', views.category_articles, name='category_articles'),
+    path('search/', views.search_feature, name='search_articles'),
 ]

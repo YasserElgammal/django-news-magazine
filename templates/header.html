@@ -96,17 +96,22 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+                    <a href="{% url 'index' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
                     {% for category in categories %}
-                    <a href="{% url 'category_articles' category.slug %}" class="nav-item nav-link">{{ category.title }}</a>
-                    {% endfor %}
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="{% url 'category_articles' category.slug %}" class="nav-item nav-link {% if category.slug == current_category_slug %}active{% endif %}">
+                        {{ category.title }}
+                    </a>
+                {% endfor %}
+                    {% comment %} <a href="contact.html" class="nav-item nav-link">Contact</a> {% endcomment %}
                 </div>
+                <form action="{% url 'search_articles' %}" method="get">
+                    {% csrf_token %}
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control border-0" placeholder="Keyword">
+                    <input type="text" name="search" value="{{ search_word }}" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
                         <button class="input-group-text bg-primary text-dark border-0 px-3"><i
                                 class="fa fa-search"></i></button>
+                    </form>
                     </div>
                 </div>
             </div>

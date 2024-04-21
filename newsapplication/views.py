@@ -15,11 +15,28 @@ def index(request):
 def article_detail(request, slug):
     article = get_object_or_404(Article, slug=slug)
     comments = Comment.objects.filter(article=article).select_related('user')
+    response = render(request, 'single_article.html', {'article': article , 'comments': comments, 'comments_count': comments.count()})
+
+    # Check if the 'viewed' cookie is set
+    if 'article_viewed_' + str(article.id) not in request.COOKIES:
+        article.views = article.views + 1
+        article.save()
+        # Set 'viewed' cookie to track the visit for 24 hours
+        response.set_cookie('article_viewed_' + str(article.id), 'true', max_age=86400) 
+        return response
     
-    return render(request, 'single_article.html', {'article': article , 'comments': comments})
+    return response
 
 def category_articles(request, slug):
     category = get_object_or_404(Category, slug=slug)
     articles = Article.objects.filter(category=category).annotate(comments_count=Count('comment'))
 
-    return render(request, 'category_articles.html', {'category': category, 'articles': articles})
+    return render(request, 'category_articles.html', {'category': category, 'articles': articles, 'current_category_slug': category.slug})
+
+def search_feature(request):
+    if request.method == 'GET':
+        search = request.GET.get('search', '')
+        articles = Article.objects.filter(title__contains=search)
+        return render(request, 'search_page.html', {'articles': articles, 'search_word': search})
+    else:
+        return render(request, 'search_page.html', {})
