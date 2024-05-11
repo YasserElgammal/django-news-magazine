@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Article, Category
 from .models.comment import Comment
 from django.db.models import Count
+from .pagination import paginate
 
 # Create your views here.
 def index(request):
@@ -30,13 +31,16 @@ def article_detail(request, slug):
 def category_articles(request, slug):
     category = get_object_or_404(Category, slug=slug)
     articles = Article.objects.filter(category=category).annotate(comments_count=Count('comment'))
-
-    return render(request, 'category_articles.html', {'category': category, 'articles': articles, 'current_category_slug': category.slug})
+    paginated_articles = paginate(request, articles, 15)
+    
+    return render(request, 'category_articles.html', {'category': category, 'articles': paginated_articles, 'current_category_slug': category.slug})
 
 def search_feature(request):
     if request.method == 'GET':
         search = request.GET.get('search', '')
         articles = Article.objects.filter(title__contains=search)
-        return render(request, 'search_page.html', {'articles': articles, 'search_word': search})
+        paginated_articles = paginate(request, articles, 15)
+
+        return render(request, 'search_page.html', {'articles': paginated_articles, 'search_word': search})
     else:
         return render(request, 'search_page.html', {})
